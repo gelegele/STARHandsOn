@@ -5,7 +5,9 @@ import org.apache.commons.lang3.SystemUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
@@ -41,13 +43,15 @@ public class IntroWork2 {
         File html = new File("introwork/introWork2.html");
         String url = "file:///" + html.getAbsolutePath();
         driver.get(url);
-        
+
+        WebElement okButton = driver.findElement(By.id("ok_button"));
+        okButton.click();
         // TODO 以下を削除して、代わりにOKボタンをクリックする処理を記述してください
-        try {
-            Thread.sleep(8000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            Thread.sleep(8000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
         // TODO ここまで削除してください
     }
 }
