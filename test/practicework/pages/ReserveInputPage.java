@@ -10,6 +10,13 @@ public class ReserveInputPage {
     private By reserveMonth = By.id("reserve_month");
     private By reserveDay = By.id("reserve_day");
     private By reserveTerm = By.id("reserve_term");
+
+    private By headCount = By.id("headcount");
+    private By breakfastOn = By.id("breakfast_on");
+    private By planA = By.id("plan_a");
+    private By planB = By.id("plan_b");
+    private By guestName = By.id("guestname");
+
     private By goToNext = By.id("goto_next");
 
     public ReserveInputPage(WebDriver driver) {
@@ -50,4 +57,36 @@ public class ReserveInputPage {
         driver.findElement(goToNext).click();
         return new ReserveConfirmPage(driver);
     }
+
+	public void setHeadCount(String value) {
+		driver.findElement(headCount).clear();
+		driver.findElement(headCount).sendKeys(value);
+	}
+
+	public void setBreakfastOn(boolean value) {
+		WebElement el = driver.findElement(breakfastOn);
+		if (el.isSelected() != value) {
+			el.click();
+		}
+	}
+
+	public void setPlanA(boolean value) {
+		WebElement el = driver.findElement(planA);
+		if (el.isSelected() != value) {
+			el.click();
+		}
+	}
+
+	public void setPlanB(boolean value) {
+		WebElement el = driver.findElement(planB);
+		if (el.isSelected() != value) {
+			el.click();
+		}
+	}
+
+	public void setGuestName(String value) {
+		WebElement el = driver.findElement(guestName);
+		el.clear();
+		el.sendKeys(value);
+	}
 }
