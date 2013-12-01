@@ -5,7 +5,9 @@ import org.apache.commons.lang3.SystemUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
@@ -41,13 +43,9 @@ public class IntroWork5 {
         File html = new File("introwork/introWork5.html");
         String url = "file:///" + html.getAbsolutePath();
         driver.get(url);
-        
-        // TODO 以下を削除して、代わりにチェックボックスを選択する処理を記述ください
-        try {
-            Thread.sleep(8000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        WebElement checkbox = driver.findElement(By.id("allowed_check"));
+        if (!checkbox.isSelected()) {
+        	checkbox.click();
         }
-        // TODO ここまで削除してください
     }
 }
