@@ -47,13 +47,11 @@ public class PracticeWork1 {
         String url = "file:///" + html.getAbsolutePath();
         driver.get(url);
         
-        // TODO 以下は削除してください
-        try {
-            Thread.sleep(8000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        // TODO ここまで削除してください
+//        try {
+//            Thread.sleep(8000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
         
         // 1ページ目入力画面
         driver.findElement(By.id("reserve_year")).clear();
@@ -64,15 +62,24 @@ public class PracticeWork1 {
         driver.findElement(By.id("reserve_day")).sendKeys("7");
         driver.findElement(By.id("reserve_term")).clear();
         driver.findElement(By.id("reserve_term")).sendKeys("1");
-        
-        // TODO 残りの処理を記述してください
+        driver.findElement(By.id("headcount")).clear();//クリアしないと2桁以上は入らない
+        driver.findElement(By.id("headcount")).sendKeys("9");
+        driver.findElement(By.id("breakfast_on")).click();
+        driver.findElement(By.id("plan_a")).click();
+        driver.findElement(By.id("plan_b")).click();
+        driver.findElement(By.id("guestname")).sendKeys("a");
 
+        driver.findElement(By.id("goto_next")).click();
+        
         // 2ページ目入力画面
         assertThat(driver.findElement(By.id("price")).getText(), is("105750"));
         assertThat(driver.findElement(By.id("datefrom")).getText(), is("2013年12月7日"));
         assertThat(driver.findElement(By.id("dateto")).getText(), is("2013年12月8日"));
         assertThat(driver.findElement(By.id("dayscount")).getText(), is("1"));
-
-        // TODO 残りの処理を記述してください
+        assertThat(driver.findElement(By.id("hc")).getText(), is("9"));
+        assertThat(driver.findElement(By.id("bf_order")).getText(), is("あり"));
+        assertThat(driver.findElement(By.id("plan_a_order")).getText(), is("昼からチェックインプラン"));
+        assertThat(driver.findElement(By.id("plan_b_order")).getText(), is("お得な観光プラン"));
+        assertThat(driver.findElement(By.id("gname")).getText(), is("a"));
     }
 }
