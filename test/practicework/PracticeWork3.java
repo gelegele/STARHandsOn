@@ -52,8 +52,11 @@ public class PracticeWork3 {
         ReserveInputPage inputPage = new ReserveInputPage(driver);
         inputPage.setReserveDate("2013", "12", "8");
         inputPage.setReserveTerm("3");
-        
-        // TODO 残りの処理を記述してください
+        inputPage.setHeadCount("1");
+        inputPage.setBreakfastOff();
+        inputPage.setPlanA(false);
+        inputPage.setPlanB(false);
+        inputPage.setGuestName("abcd");
         
         ReserveConfirmPage confirmPage = inputPage.goToNext();
         
@@ -62,7 +65,11 @@ public class PracticeWork3 {
         assertThat(confirmPage.getDateFrom(), is("2013年12月8日"));
         assertThat(confirmPage.getDateTo(), is("2013年12月11日"));
         assertThat(confirmPage.getDaysCount(), is("3"));
+        assertThat(confirmPage.getHeadCount(), is("1"));
+        assertThat(confirmPage.isBreakfast(), is(false));
+        assertThat(confirmPage.isPlanA(), is(false));
+        assertThat(confirmPage.isPlanB(), is(false));
+        assertThat(confirmPage.getGuestName(), is("abcd"));
 
-        // TODO 残りの処理を記述してください
     }
 }
