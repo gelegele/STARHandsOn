@@ -54,7 +54,7 @@ public class PracticeWork2 {
         inputPage.setReserveDate("2013", "12", "7");
         inputPage.setReserveTerm("1");
         inputPage.setHeadCount("9");
-        inputPage.setBreakfastOn(true);
+        inputPage.setBreakfastOn();
         inputPage.setPlanA(true);
         inputPage.setPlanB(true);
         inputPage.setGuestName("a");

@@ -13,6 +13,7 @@ public class ReserveInputPage {
 
     private By headCount = By.id("headcount");
     private By breakfastOn = By.id("breakfast_on");
+    private By breakfastOff = By.id("breakfast_off");
     private By planA = By.id("plan_a");
     private By planB = By.id("plan_b");
     private By guestName = By.id("guestname");
@@ -63,11 +64,12 @@ public class ReserveInputPage {
 		driver.findElement(headCount).sendKeys(value);
 	}
 
-	public void setBreakfastOn(boolean value) {
-		WebElement el = driver.findElement(breakfastOn);
-		if (el.isSelected() != value) {
-			el.click();
-		}
+	public void setBreakfastOn() {
+		driver.findElement(breakfastOn).click();
+	}
+
+	public void setBreakfastOff() {
+		driver.findElement(breakfastOff).click();
 	}
 
 	public void setPlanA(boolean value) {

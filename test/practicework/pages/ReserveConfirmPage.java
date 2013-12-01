@@ -40,15 +40,29 @@ public class ReserveConfirmPage {
 	}
 
 	public boolean isBreakfast() {
-		return "あり".equals(driver.findElement(breakfast).getText());
+		if ("あり".equals(driver.findElement(breakfast).getText())) {
+			return true;
+		} else if ("なし".equals(driver.findElement(breakfast).getText())) {
+			return false;
+		} else {
+			throw new RuntimeException();
+		}
 	}
 
 	public boolean isPlanA() {
-		return "昼からチェックインプラン".equals(driver.findElement(planA).getText());
+		if (0 < driver.findElements(planA).size()) {
+			return "昼からチェックインプラン".equals(driver.findElement(planA).getText());
+		} else {
+			return false;
+		}
 	}
 
 	public boolean isPlanB() {
-		return "お得な観光プラン".equals(driver.findElement(planB).getText());
+		if (0 < driver.findElements(planB).size()) {
+			return "お得な観光プラン".equals(driver.findElement(planB).getText());
+		} else {
+			return false;
+		}
 	}
 
 	public String getGuestName() {
