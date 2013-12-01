@@ -5,6 +5,7 @@ import org.apache.commons.lang3.SystemUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -41,13 +42,14 @@ public class IntroWork4 {
         File html = new File("introwork/introWork4.html");
         String url = "file:///" + html.getAbsolutePath();
         driver.get(url);
-        
-        // TODO 以下を削除して、代わりにラジオボタンを選択する処理を記述してください
-        try {
-            Thread.sleep(8000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        // TODO ここまで削除してください
+
+        driver.findElement(By.id("on_radio")).click();
+//        // TODO 以下を削除して、代わりにラジオボタンを選択する処理を記述してください
+//        try {
+//            Thread.sleep(8000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//        // TODO ここまで削除してください
     }
 }
