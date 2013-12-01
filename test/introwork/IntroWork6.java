@@ -5,8 +5,10 @@ import org.apache.commons.lang3.SystemUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * 入門課題その6:「プルダウンを選択してみよう」
@@ -41,13 +43,8 @@ public class IntroWork6 {
         File html = new File("introwork/introWork6.html");
         String url = "file:///" + html.getAbsolutePath();
         driver.get(url);
-        
-        // TODO 以下を削除して、代わりにチェックボックスを選択する処理を記述ください
-        try {
-            Thread.sleep(8000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        // TODO ここまで削除してください
+
+        Select select = new Select(driver.findElement(By.id("head_count")));
+        select.selectByValue("5");
     }
 }
