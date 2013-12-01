@@ -1,5 +1,8 @@
 package practicework;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
@@ -9,6 +12,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import practicework.pages.ReserveInputPage;
 
 public class PracticeWork5 {
     private WebDriver driver;
@@ -43,6 +48,15 @@ public class PracticeWork5 {
         String url = "file:///" + html.getAbsolutePath();
         driver.get(url);
         
-        // TODO 初期値チェック処理を記述してください
+        // 初期値チェック処理を記述してください
+        ReserveInputPage reserveInputPage = new ReserveInputPage(driver);
+        assertThat(reserveInputPage.getReserveDate(), is("2013/12/1")); //TODO 今日の日付
+        assertThat(reserveInputPage.getReserveTerm(), is("1"));
+        assertThat(reserveInputPage.getHeadCount(), is("1"));
+        assertThat(reserveInputPage.isBreakfastOn(), is(true));
+        assertThat(reserveInputPage.isBreakfastOff(), is(false));
+        assertThat(reserveInputPage.isPlanA(), is(false));
+        assertThat(reserveInputPage.isPlanB(), is(false));
+        assertThat(reserveInputPage.getGuestName(), is(""));
     }
 }

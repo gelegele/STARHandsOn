@@ -31,14 +31,18 @@ public class ReserveInputPage {
     	el.sendKeys(Keys.RETURN);
     }
 
+    public String getReserveDate() {
+    	return this.driver.findElement(reserveDate).getAttribute("value");
+    }
+
     public void setReserveTerm(String value) {
         Select select = new Select(driver.findElement(reserveTerm));
         select.selectByValue(value);
     }
     
-    public ReserveConfirmPage goToNext() {
-        driver.findElement(goToNext).click();
-        return new ReserveConfirmPage(driver);
+    public String getReserveTerm() {
+        WebElement selectedOption = new Select(driver.findElement(reserveTerm)).getFirstSelectedOption();
+        return selectedOption.getAttribute("value");
     }
 
 	public void setHeadCount(String value) {
@@ -46,12 +50,25 @@ public class ReserveInputPage {
         select.selectByValue(value);
 	}
 
+	public String getHeadCount() {
+        WebElement selectedOption = new Select(driver.findElement(headCount)).getFirstSelectedOption();
+        return selectedOption.getAttribute("value");
+	}
+
 	public void setBreakfastOn() {
 		driver.findElement(breakfastOn).click();
 	}
 
+	public boolean isBreakfastOn() {
+		return "true".equals(driver.findElement(breakfastOn).getAttribute("checked"));
+	}
+
 	public void setBreakfastOff() {
 		driver.findElement(breakfastOff).click();
+	}
+
+	public boolean isBreakfastOff() {
+		return "true".equals(driver.findElement(breakfastOff).getAttribute("checked"));
 	}
 
 	public void setPlanA(boolean value) {
@@ -59,6 +76,14 @@ public class ReserveInputPage {
 		if (el.isSelected() != value) {
 			el.click();
 		}
+	}
+
+	public boolean isPlanA() {
+		return "true".equals(driver.findElement(planA).getAttribute("checked"));
+	}
+
+	public boolean isPlanB() {
+		return "true".equals(driver.findElement(planB).getAttribute("checked"));
 	}
 
 	public void setPlanB(boolean value) {
@@ -73,4 +98,13 @@ public class ReserveInputPage {
 		el.clear();
 		el.sendKeys(value);
 	}
+
+	public String getGuestName() {
+		return driver.findElement(guestName).getAttribute("value");
+	}
+
+    public ReserveConfirmPage goToNext() {
+        driver.findElement(goToNext).click();
+        return new ReserveConfirmPage(driver);
+    }
 }
