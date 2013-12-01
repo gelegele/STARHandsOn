@@ -45,7 +45,7 @@ public class PracticeWork2 {
     
     @Test
     public void test() {
-        File html = new File("reserveApp/index.html");
+        File html = new File("reserveApp_Renewal/index.html");
         String url = "file:///" + html.getAbsolutePath();
         driver.get(url);
         
